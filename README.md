@@ -1,18 +1,10 @@
 # Hack Cambridge Foundation Website Lite
 
 This project is the testing framework for the Hack Cambridge Foundation master website.\
-This website will contain the following information about the Hack Cambridge Foundation and its annual hackathons:
-
-- History of the foundation
-- Charity Status documentation
-- Foundation Agreements documents
-- Trustee documents
-- Past committee members
-- Past hackathon volunteers
-- Pictures of past hackathons
-- List of past sponsors
-- List of supporters
-- List of logistic supporters
+This website may be used to test whether future websites are compatible with the existing setup.\
+Docker images can be created for the future website setup, and pushed into the Hack Cambridge account.\
+These public docker images can then be pulled into this Docker container for testing.\
+Please verify whether your images are working properly here, before deploying the container.
 
 ## Links to annual hackathons
 
