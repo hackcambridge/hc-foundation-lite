@@ -17,8 +17,8 @@ export default function HackCambridgeFoundationLogo() {
 
   switch (resolvedTheme) {
     case 'light':
-      return <img src="/HCF_banner_black.png" alt="Hack Cambridge Foundation Logo Light Mode" />
+      return <img className='banner' src="/foundation/HCF_banner_black.png" alt="Hack Cambridge Foundation Logo Light Mode" />
     case 'dark':
-      return <img src="/HCF_banner_white.png" alt="Hack Cambridge Foundation Logo Dark Mode" />
+      return <img className='banner' src="/foundation/HCF_banner_white.png" alt="Hack Cambridge Foundation Logo Dark Mode" />
   }
 }
