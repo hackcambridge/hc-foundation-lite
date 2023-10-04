@@ -1,14 +1,15 @@
 "use client"
-import './HC_2016.scss'
+import './HC_logos.scss'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 
-function HackCambridge2016LogoSmall() {
+function HackCambridge2016LogoSmall({loaded}) {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    if (!loaded) setMounted(true)
+    else setMounted(false)
   }, [])
 
   if (!mounted) {
@@ -23,12 +24,13 @@ function HackCambridge2016LogoSmall() {
   }
 }
 
-function HackCambridge2016LogoLarge() {
+function HackCambridge2016LogoLarge({loaded}) {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    if (!loaded) setMounted(true)
+    else setMounted(false)
   }, [])
 
   if (!mounted) {
