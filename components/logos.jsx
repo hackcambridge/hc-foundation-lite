@@ -1,15 +1,15 @@
 "use client"
 import './globals.css'
 import { useState, useEffect } from 'react'
-import HackCambridgeFoundationLogo from '../components/HCF_banner'
-import { HackCambridge2016LogoSmall, HackCambridge2016LogoLarge } from '../components/HC_2016'
-import { HackCambridge2017LogoSmall, HackCambridge2017LogoLarge } from '../components/HC_2017'
-import { HackCambridge2018LogoSmall, HackCambridge2018LogoLarge } from '../components/HC_2018'
-import { HackCambridge2019LogoSmall, HackCambridge2019LogoLarge } from '../components/HC_2019'
-import { HackCambridge2020LogoSmall, HackCambridge2020LogoLarge } from '../components/HC_2020'
-import { HackCambridge2021LogoSmall, HackCambridge2021LogoLarge } from '../components/HC_2021'
-import { HackCambridge2022LogoSmall, HackCambridge2022LogoLarge } from '../components/HC_2022'
-import { HackCambridge2023LogoSmall, HackCambridge2023LogoLarge } from '../components/HC_2023'
+import HackCambridgeFoundationLogo from './HCF_banner'
+import { HackCambridge2016LogoSmall, HackCambridge2016LogoLarge } from './HC_2016'
+import { HackCambridge2017LogoSmall, HackCambridge2017LogoLarge } from './HC_2017'
+import { HackCambridge2018LogoSmall, HackCambridge2018LogoLarge } from './HC_2018'
+import { HackCambridge2019LogoSmall, HackCambridge2019LogoLarge } from './HC_2019'
+import { HackCambridge2020LogoSmall, HackCambridge2020LogoLarge } from './HC_2020'
+import { HackCambridge2021LogoSmall, HackCambridge2021LogoLarge } from './HC_2021'
+import { HackCambridge2022LogoSmall, HackCambridge2022LogoLarge } from './HC_2022'
+import { HackCambridge2023LogoSmall, HackCambridge2023LogoLarge } from './HC_2023'
 
 export default function HackCambridgeLogos() {
   const hackathonTime = 1000 // Time for each hackathon logo (must match CSS animation time 'tailwind.config.ts')
