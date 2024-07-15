@@ -18,6 +18,10 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
+  EmailIcon,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
   TwitterIcon,
   GithubIcon,
   DiscordIcon,
@@ -32,7 +36,7 @@ export const Navbar = () => {
       aria-label="Search"
       classNames={{
         inputWrapper: "bg-default-100",
-        input: "text-sm",
+        input: "px-grotesk text-sm",
       }}
       endContent={
         <Kbd className="hidden lg:inline-block" keys={["command"]}>
@@ -54,7 +58,15 @@ export const Navbar = () => {
         <NavbarBrand className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            {/* <a href="http://www.onlinewebfonts.com/fonts">Web Fonts</a> */}
+            <div className="flex flex-col gap-0">
+              <p className="text-3xs/[4px] text-inherit px-grotesk">  The</p>
+              <div className="flex flex-row gap-0">
+                <p className="text-sm/[18px] text-inherit px-grotesk font-thin">Hack</p>
+                <p className="text-sm/[18px] text-inherit px-grotesk font-bold">Cambridge</p>
+              </div>
+              <p className="text-3xs/[4px] text-inherit px-grotesk">  Foundation</p>
+            </div>
           </NextLink>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -63,7 +75,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "px-grotesk data-[active=true]:text-primary data-[active=true]:font-medium",
                 )}
                 color="foreground"
                 href={item.href}
@@ -80,6 +92,15 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          <Link isExternal href={siteConfig.links.facebook}>
+            <FacebookIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.linkedin}>
+            <LinkedInIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.instagram}>
+            <InstagramIcon className="text-default-500" />
+          </Link>
           <Link isExternal href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link>
@@ -89,6 +110,9 @@ export const Navbar = () => {
           <Link isExternal href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
+          <Link isExternal href={siteConfig.links.email}>
+            <EmailIcon className="text-default-500" />
+          </Link>
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
@@ -96,7 +120,7 @@ export const Navbar = () => {
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="px-grotesk text-sm font-normal text-default-600 bg-default-100"
             href={siteConfig.links.sponsor}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"

@@ -1,13 +1,18 @@
-import { Fira_Code as FontMono, Inter as FontSans } from "next/font/google";
+import { Fira_Code, Inter, Orbitron } from "next/font/google";
 
-export const fontSans = FontSans({
+export const fontSans = Fira_Code({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const fontMono = FontMono({
+export const fontMono = Inter({
   subsets: ["latin"],
   variable: "--font-mono",
+});
+
+export const fontOrbitron = Orbitron({
+  subsets: ["latin"],
+  variable: "--font-orbitron",
 });
 
 // <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
