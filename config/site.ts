@@ -9,23 +9,23 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Address",
+      href: "/address",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "Charity",
+      href: "/charity",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Trustees",
+      href: "/trustees",
     },
     {
-      label: "About",
-      href: "/about",
+      label: "Login",
+      href: "/login",
     },
   ],
-  navMenuItems: [
+  navPostLoginItems: [
     {
       label: "Profile",
       href: "/profile",
@@ -66,7 +66,6 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/hack_cambridge",
     github: "https://github.com/hackcambridge",
     twitter: "https://x.com/Hack_Cambridge",
-    // docs: "https://nextui-docs-v2.vercel.app",
     discord: "https://discord.gg/a8uxk8Jg",
     sponsor: "mailto://team@hackcambridge.com",
   },
