@@ -15,8 +15,8 @@ export default function AddressPage() {
         </p>
         <h1 className="px-grotesk tracking-tight inline font-semibold text-[2.3rem] lg:text-5xl leading-9 py-4">About ideaSpace</h1>
         <p className="text-center">
-          ideaSpace is a community of founders, innovators and investors in Cambridge. <br />
-          ideaSpace City is a co-working space in the heart of Cambridge, where the Hack Cambridge Foundation is based. <br />
+          <strong>ideaSpace</strong> is a community of founders, innovators and investors in Cambridge. <br />
+          <a href="https://ideaspace.cam.ac.uk/"><strong>ideaSpace City</strong></a> is a co-working space in the heart of Cambridge, where the Hack Cambridge Foundation is based. <br />
           It is located in the centre of Cambridge, close to the train station and the city's main attractions. <br />
         </p>
         <p className="text-center py-4">
