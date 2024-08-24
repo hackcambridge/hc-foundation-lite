@@ -10,7 +10,6 @@ import {
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
@@ -70,7 +69,7 @@ export const Navbar = () => {
                   "px-grotesk data-[active=true]:font-medium",
                 )}
                 color={
-                  index === siteConfig.navItems.length - 1
+                  index >= siteConfig.navItems.length - 2
                     ? "danger"
                     : "foreground"
                 }
