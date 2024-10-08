@@ -21,8 +21,8 @@ export const siteConfig = {
       href: "/trustees",
     },
     {
-      label: "Login",
-      href: "/login",
+      label: "Hackathons",
+      href: "/hackathons",
     },
   ],
   navPostLoginItems: [
