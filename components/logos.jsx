@@ -1,6 +1,7 @@
 "use client"
 import './globals.css'
 import { useState, useEffect } from 'react'
+
 import HackCambridgeFoundationLogo from './HCF_banner'
 import { HackCambridge2016LogoSmall, HackCambridge2016LogoLarge } from './HC_2016'
 import { HackCambridge2017LogoSmall, HackCambridge2017LogoLarge } from './HC_2017'

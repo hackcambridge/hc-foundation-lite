@@ -47,6 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // If user is a member, allow them to proceed
       const profilePicture =
         userProfile.profilePicture['displayImage~'].elements[0].identifiers[0].identifier;
+
       res.redirect(`/profile?picture=${encodeURIComponent(profilePicture)}`);
     } else {
       // If not, deny access

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTheme } from "next-themes";
+
 import { Head } from "./head";
 
 import { Navbar } from "@/components/navbar";
-import { useTheme } from "next-themes";
 
 export default function DefaultLayout({
   children,
@@ -29,10 +30,10 @@ export default function DefaultLayout({
         {loadGIF === "" ? null :
           <div className="flex justify-center">
             <Image
-              src={loadGIF}
               alt="Hack Cambridge Foundation"
-              width={700}
               height={700}
+              src={loadGIF}
+              width={700}
             />
           </div>
         }

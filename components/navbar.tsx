@@ -9,12 +9,13 @@ import {
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
+// import { Input } from "@nextui-org/input";
+// import { link as linkStyles } from "@nextui-org/theme";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
+import DropdownMenu from "@/components/dropdown-menu";
 import {
   EmailIcon,
   FacebookIcon,
@@ -24,26 +25,27 @@ import {
   GithubIcon,
   DiscordIcon,
   HeartFilledIcon,
-  SearchIcon,
+  // SearchIcon,
   Logo,
 } from "@/components/icons";
+import { UserAvatar } from "@/components/avatar";
 
 export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "px-grotesk text-sm",
-      }}
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+  // const searchInput = (
+  //   <Input
+  //     aria-label="Search"
+  //     classNames={{
+  //       inputWrapper: "bg-default-100",
+  //       input: "px-grotesk text-sm",
+  //     }}
+  //     labelPlacement="outside"
+  //     placeholder="Search..."
+  //     startContent={
+  //       <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+  //     }
+  //     type="search"
+  //   />
+  // );
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -63,17 +65,13 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item, index) => (
+          {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <Link
                 className={clsx(
                   "px-grotesk data-[active=true]:font-medium",
                 )}
-                color={
-                  index === siteConfig.navItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
+                color="foreground"
                 href={item.href}
               >
                 {item.label}
@@ -111,7 +109,10 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem className="lg:flex">
+          <UserAvatar />
+          <DropdownMenu />
+        </NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button
             isExternal
@@ -127,33 +128,44 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
+        <UserAvatar />
+        <DropdownMenu />
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
+              <Link color="foreground" href={item.href} size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>
           ))}
+        </div>
+        <div className="p-12 absolute inset-x-0 bottom-0 flex justify-around items-center">
+          <Link isExternal href={siteConfig.links.facebook}>
+            <FacebookIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.linkedin}>
+            <LinkedInIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.instagram}>
+            <InstagramIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.twitter}>
+            <TwitterIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.discord}>
+            <DiscordIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.github}>
+            <GithubIcon className="text-default-500" />
+          </Link>
+          <Link isExternal href={siteConfig.links.email}>
+            <EmailIcon className="text-default-500" />
+          </Link>
         </div>
       </NavbarMenu>
     </NextUINavbar>

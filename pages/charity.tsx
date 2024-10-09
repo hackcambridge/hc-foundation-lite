@@ -10,7 +10,7 @@ export default function CharityPage() {
           <p className="py-4 text-center">
             The Hack Cambridge Foundation (HCF) is a charity that aims to inspire and empower the next generation of technologists. <br />
             In late October 2017 we filed for registering a Charitable Incorporated Organisation (Foundation model). <br />
-            The trustees' job is to represent the organisation in the face of the Charity Commission and to make sure that its objectives
+            The trustees&apos; job is to represent the organisation in the face of the Charity Commission and to make sure that its objectives
               (detailed in the <a href="/documents/constitution.pdf">Constitution</a>) are upheld. <br />
             Informally, they are veteran committee members who will provide assistance to the current committee (but will not be directly responsible for organising the event). <br />
             They also have to file an annual report of activities and annual accounts. <br />
@@ -21,7 +21,7 @@ export default function CharityPage() {
           <ol className="py-4 list-decimal list-inside text-left">
             <li><strong>Favourable tax treatment</strong> - charities do not pay Corporation Tax, although we believe that as an unincorporated association we might not be liable to it anyway.</li>
             <li><strong>Limited liability</strong> - the CIO is a type of incorporated organisation which trades in its own name. Previously the committee had personal liability.</li>
-            <li><strong>Captures the essence of the event well</strong> - it's all about the hackers, not the committee making a profit. <br />
+            <li><strong>Captures the essence of the event well</strong> - it&apos;s all about the hackers, not the committee making a profit. <br />
             We could have registered as a non-profit company, but limited companies have a larger administrative overhead.</li>
           </ol>
           <a href="/documents/cio.pdf">
@@ -31,7 +31,7 @@ export default function CharityPage() {
             <p className="py-2 text-center underline">Read the Hack Cambridge Foundation Constitution</p>
           </a>
           <p className="py-2 text-center">
-            HCF's constitution allows for funding of other tech-related events that might not necessarily be hackathons, but must aim to uphold the object.
+            HCF&apos;s constitution allows for funding of other tech-related events that might not necessarily be hackathons, but must aim to uphold the object.
           </p>
           <p className="py-2 text-center">
             From Hack Cambridge 2019, our hackathons now take place under the Hack Cambridge Foundation.
