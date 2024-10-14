@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   hc-foundation-app:
-    image: hackcambridge/hc-foundation-lite:v1.0.1
+    image: hackcambridge/hc-foundation-lite:v1.0.0-alpha
     container_name: hc-foundation-app
     ports:
       - 80:3000

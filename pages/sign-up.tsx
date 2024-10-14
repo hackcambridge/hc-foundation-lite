@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Spacer } from "@nextui-org/spacer";
@@ -9,10 +9,6 @@ import { AuthContext, FirstName, LastName, Email, PasswordInput } from "@/compon
 
 export default function SignUpPage() {
   const { isLoggedIn, isSignedUp, firstName, lastName, signUp } = useContext(AuthContext);
-
-  const handleSubmit = async () => {
-    await signUp();
-  };
 
   return (
     <DefaultLayout>
@@ -53,7 +49,7 @@ export default function SignUpPage() {
                   className="bg-blue-500 text-white rounded-md px-4 py-2 gap-y-16"
                   color="primary"
                   type="submit"
-                  onClick={handleSubmit}
+                  onClick={() => signUp()}
                 >
                   Sign Up
                 </Button>

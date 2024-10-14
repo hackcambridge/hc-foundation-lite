@@ -23,6 +23,7 @@ export default async function handler(req, res) {
 
       for (const { name, collection } of collections) {
         const user = await collection.findOne({ email });
+
         if (user) {
           return res.status(200).json({
             role: name,

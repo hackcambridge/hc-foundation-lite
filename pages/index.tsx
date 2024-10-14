@@ -1,9 +1,33 @@
+import { useTheme } from "next-themes";
+import { Image } from "@nextui-org/image";
+
 import DefaultLayout from "@/layouts/default";
 
 export default function IndexPage() {
+  const { theme } = useTheme();
+
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8">
+        {theme === "dark" ? (
+          <div className="justify-center flex">
+            <Image
+              alt="Hack Cambridge Foundation"
+              height={700}
+              src={"/images/hack-cambridge-dark.gif"}
+              width={700}
+            />
+          </div>
+        ) : (
+          <div className="justify-center flex">
+            <Image
+              alt="Hack Cambridge Foundation"
+              height={700}
+              src={"/images/hack-cambridge-light.gif"}
+              width={700}
+            />
+          </div>
+        )}
         <h1 className="text-4xl font-bold text-center">
           The Hack Cambridge Foundation is a charity that aims to inspire and
           empower the next generation of technologists.

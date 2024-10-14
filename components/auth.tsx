@@ -266,6 +266,35 @@ export function FirstName() {
   );
 }
 
+export function FirstNameUpdate() {
+  const [firstNameInput, setFirstNameInput] = useState("");
+  const { firstName, setFirstName } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (firstName !== "") {
+      setFirstNameInput(firstName);
+    }
+  }, [firstName]);
+
+  useEffect(() => {
+    setFirstName(firstNameInput);
+  }, [firstNameInput]);
+
+  return (
+    <Input
+      fullWidth
+      isRequired
+      className="w-full md:w-3/5"
+      id="first-name"
+      label="First Name"
+      placeholder="Enter your first name"
+      type="text"
+      value={firstNameInput}
+      onValueChange={setFirstNameInput}
+    />
+  );
+}
+
 export function LastName() {
   const [lastNameInput, setLastNameInput] = useState("");
   const { setLastName } = useContext(AuthContext);
@@ -289,9 +318,72 @@ export function LastName() {
   );
 }
 
+export function LastNameUpdate() {
+  const [lastNameInput, setLastNameInput] = useState("");
+  const { lastName, setLastName } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (lastName !== "") {
+      setLastNameInput(lastName);
+    }
+  }, [lastName]);
+
+  useEffect(() => {
+    setLastName(lastNameInput);
+  }, [lastNameInput]);
+
+  return (
+    <Input
+      fullWidth
+      isRequired
+      className="w-full md:w-3/5"
+      id="last-name"
+      label="Last Name"
+      placeholder="Enter your last name"
+      type="text"
+      value={lastNameInput}
+      onValueChange={setLastNameInput}
+    />
+  );
+}
+
 export function Email() {
   const [emailInput, setEmailInput] = useState("");
   const { setEmail, validateEmail, isEmailValid } = useContext(AuthContext);
+
+  useEffect(() => {
+    setEmail(emailInput);
+    validateEmail();
+  }, [emailInput]);
+
+  return (
+    <Input
+      fullWidth
+      isRequired
+      className="w-full md:w-3/5"
+      color={isEmailValid ? "default" : "danger"}
+      errorMessage="Please enter a valid email"
+      id="email"
+      isInvalid={!isEmailValid}
+      label="Email"
+      placeholder="Enter your email address"
+      type="email"
+      value={emailInput}
+      onValueChange={setEmailInput}
+    />
+  );
+}
+
+export function EmailUpdate() {
+  const [emailInput, setEmailInput] = useState("");
+  const { email, setEmail, validateEmail, isEmailValid } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    if (email !== "") {
+      setEmailInput(email);
+    }
+  }, [email]);
 
   useEffect(() => {
     setEmail(emailInput);
@@ -357,7 +449,8 @@ export function PasswordInput() {
 
 export function Password() {
   const [passwordInput, setPasswordInput] = useState("");
-  const { setPassword, validatePassword, isPasswordValid } = useContext(AuthContext);
+  const { setPassword, validatePassword, isPasswordValid } =
+    useContext(AuthContext);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

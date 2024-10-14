@@ -15,7 +15,6 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import DropdownMenu from "@/components/dropdown-menu";
 import {
   EmailIcon,
   FacebookIcon,
@@ -85,7 +84,7 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden lg:flex gap-2">
           <Link isExternal href={siteConfig.links.facebook}>
             <FacebookIcon className="text-default-500" />
           </Link>
@@ -109,11 +108,10 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="lg:flex">
+        <NavbarItem className="hidden lg:flex">
           <UserAvatar />
-          <DropdownMenu />
         </NavbarItem>
-        <NavbarItem className="hidden md:flex">
+        <NavbarItem className="hidden lg:flex">
           <Button
             isExternal
             as={Link}
@@ -127,10 +125,9 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <UserAvatar />
-        <DropdownMenu />
+      <NavbarContent className="lg:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
+        <UserAvatar />
         <NavbarMenuToggle />
       </NavbarContent>
 
@@ -143,6 +140,15 @@ export const Navbar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
+          <NavbarMenuItem>
+            <Link
+              color="danger"
+              href={siteConfig.links.sponsor}
+              size="lg"
+            >
+              Sponsor
+            </Link>
+          </NavbarMenuItem>
         </div>
         <div className="p-12 absolute inset-x-0 bottom-0 flex justify-around items-center">
           <Link isExternal href={siteConfig.links.facebook}>

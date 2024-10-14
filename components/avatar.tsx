@@ -1,79 +1,216 @@
-import { useState, useEffect, useContext } from "react";
+import { FC, useState, useEffect, useContext } from "react";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { Avatar } from "@nextui-org/avatar";
 import { Badge } from "@nextui-org/badge";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
+import { Link } from "@nextui-org/link";
+import { SwitchProps, useSwitch } from "@nextui-org/switch";
+import { useTheme } from "next-themes";
+import clsx from "clsx";
 
 import { AuthContext } from "@/components/auth";
 
-export function UserAvatar() {
-  const { isLoggedIn, avatar, firstName, lastName, notifications } = useContext(AuthContext);
+export interface ThemeSwitchProps {
+  className?: string;
+  classNames?: SwitchProps["classNames"];
+}
 
-  if (isLoggedIn) {
-    if (notifications === 0) {
-      if (avatar !== "") {
-        return (
-          <Avatar
-            isBordered
-            isFocusable
-            id="avatar"
-            name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
-            size="sm"
-            src={avatar}
-          />
-        );
-      } else {
-        return (
-          <Avatar
-            isBordered
-            isFocusable
-            id="avatar"
-            name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
-            size="sm"
-          />
-        );
-      }
-    } else {
-      if (avatar !== "") {
-        return (
-          <Badge
-            color="danger"
-            content={notifications.toString()}
-            placement="top-right"
-            size="sm"
-          >
-            <Avatar
-              isBordered
-              isFocusable
-              id="avatar"
-              name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
-              size="sm"
-              src={avatar}
-            />
-          </Badge>
-        );
-      } else {
-        return (
-          <Badge
-            color="danger"
-            content={notifications.toString()}
-            placement="top-right"
-            size="sm"
-          >
-            <Avatar
-              isBordered
-              isFocusable
-              id="avatar"
-              name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
-              size="sm"
-            />
-          </Badge>
-        );
-      }
-    }
-  } else {
-    return <Avatar isBordered isFocusable showFallback id="avatar" size="sm" />;
+export const UserAvatar: FC<ThemeSwitchProps> = ({
+  className,
+  classNames,
+}) => {
+  const { isLoggedIn, avatar, firstName, lastName, notifications } =
+    useContext(AuthContext);
+  const { theme } = useTheme();
+  
+  const [isMounted, setIsMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onChange = () => {
+    setIsOpen(!isOpen);
   }
+
+  const {
+    Component,
+    slots,
+    isSelected,
+    getBaseProps,
+    getInputProps,
+    getWrapperProps,
+  } = useSwitch({
+    isSelected: isOpen,
+    onChange,
+  });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [isMounted]);
+
+  // Prevent Hydration Mismatch
+  if (!isMounted) return <div className="w-6 h-6" />;
+
+  return (
+    <div>
+      <Component
+        {...getBaseProps({
+          className: clsx(
+            "px-0 transition-opacity hover:opacity-80 cursor-pointer",
+            className,
+            classNames?.base,
+          ),
+        })}
+      >
+        <VisuallyHidden>
+          <input {...getInputProps()} />
+        </VisuallyHidden>
+        <div
+          {...getWrapperProps()}
+          className={slots.wrapper({
+            class: clsx(
+              [
+                "w-12 h-12",
+                "bg-transparent",
+                "rounded-full",
+                "flex items-center justify-center",
+                "group-data-[selected=true]:bg-transparent",
+                "!text-default-500",
+                "pt-px",
+                "px-0",
+                "mx-0",
+              ],
+              classNames?.wrapper,
+            ),
+          })}
+        >
+          {isLoggedIn ? (
+            notifications === 0 ? (
+              avatar !== "" ? (
+                <Avatar
+                  isBordered
+                  isFocusable
+                  id="avatar"
+                  name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
+                  size="sm"
+                  src={avatar}
+                />
+              ) : (
+                <Avatar
+                  isBordered
+                  isFocusable
+                  id="avatar"
+                  name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
+                  size="sm"
+                />
+              )
+            ) : (
+              avatar !== "" ? (
+                <Badge
+                  color="danger"
+                  content={notifications.toString()}
+                  placement="top-right"
+                  size="sm"
+                >
+                  <Avatar
+                    isBordered
+                    isFocusable
+                    id="avatar"
+                    name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
+                    size="sm"
+                    src={avatar}
+                  />
+                </Badge>
+              ) : (
+                <Badge
+                  color="danger"
+                  content={notifications.toString()}
+                  placement="top-right"
+                  size="sm"
+                >
+                  <Avatar
+                    isBordered
+                    isFocusable
+                    id="avatar"
+                    name={`${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()}
+                    size="sm"
+                  />
+                </Badge>
+              )
+            )
+          ) : (
+            <Avatar isBordered isFocusable showFallback id="avatar" size="sm" />
+          )}
+        </div>
+      </Component>
+      {isSelected && (
+        <div className="absolute top-14 right-6 z-10 w-44 mt-2 border rounded shadow-lg">
+          {!isLoggedIn ? (
+            theme === "dark" ? (
+              <>
+                <Link
+                  className="block px-4 py-2 text-sm text-center text-white hover:bg-gray-700"
+                  href="/sign-in"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-sm text-center text-white hover:bg-gray-700"
+                  href="/sign-up"
+                >
+                  Sign up
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  className="block px-4 py-2 text-sm text-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  href="/sign-in"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-sm text-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  href="/sign-up"
+                >
+                  Sign up
+                </Link>
+              </>
+            )
+          ) : theme === "dark" ? (
+            <>
+              <Link
+                className="block px-4 py-2 text-sm text-center text-white hover:bg-gray-700"
+                href="/profile"
+              >
+                Profile Settings
+              </Link>
+              <Link
+                className="block px-4 py-2 text-sm text-center text-white hover:bg-gray-700"
+                href="/sign-out"
+              >
+                Sign out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                className="block px-4 py-2 text-sm text-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="/profile"
+              >
+                Profile Settings
+              </Link>
+              <Link
+                className="block px-4 py-2 text-sm text-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                href="/sign-out"
+              >
+                Sign out
+              </Link>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 const Result = ({ status }: { status: string }) => {
