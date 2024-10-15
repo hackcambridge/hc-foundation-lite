@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     depends_on:
-      - hc-foundation-app
+      # - hc-foundation-app
       - hc-2016-first
       - hc-2017-recurse
       - hc-2018-ternary
@@ -24,13 +24,13 @@ services:
       - hc-2022-atlas
       - hc-2023-spyder
 
-  hc-foundation-app:
-    image: hackcambridge/hc-foundation-lite:v1.0.1
-    container_name: hc-foundation-app
-    ports:
-      - 200:3000
-    networks:
-      - hc-foundation-lite
+  # hc-foundation-app:
+  #   image: hackcambridge/hc-foundation:v1.0.1
+  #   container_name: hc-foundation-app
+  #   ports:
+  #     - 200:3000
+  #   networks:
+  #     - hc-foundation-lite
   
   hc-2016-first:
     image: hackcambridge/hc-2016-first:v1.0.0
